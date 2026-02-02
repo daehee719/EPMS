@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource
+        name="jdbc/epmsDev"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="org.mariadb.jdbc.Driver"
+        url="jdbc:mariadb://localhost:3306/epms_dev?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Seoul"
+        username="epms_dev_user"
+        password="epms_dev_pass1!"
+        maxTotal="20"
+        maxIdle="10"
+        maxWaitMillis="10000"
+        testOnBorrow="true"
+        validationQuery="SELECT 1"
+    />
+    <Resource
+        name="jdbc/epmsProd"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="org.mariadb.jdbc.Driver"
+        url="jdbc:mariadb://localhost:3306/epms_prod?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Seoul"
+        username="epms_prod_user"
+        password="epms_prod_pass1!"
+        maxTotal="20"
+        maxIdle="10"
+        maxWaitMillis="10000"
+        testOnBorrow="true"
+        validationQuery="SELECT 1"
+    />
+</Context>
