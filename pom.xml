@@ -584,7 +584,7 @@
     <build>
         <defaultGoal>install</defaultGoal>
         <directory>${basedir}/target</directory>
-        <finalName>egovframework-all-in-one</finalName>
+        <finalName>EPMS</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
