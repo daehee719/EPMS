@@ -138,22 +138,18 @@ EduAdmin은 공공·교육기관에서 운영하는
 
 ---
 
-## 6. 프로젝트 구조 (초기)
+## 6. 프로젝트 구조 (현재)
 ```text
 src
  └─ main
     ├─ java
-    │   └─ kr.go.eduadmin
-    │       ├─ program
-    │       │   ├─ web        (Controller)
-    │       │   ├─ service    (Service / Impl)
-    │       │   ├─ mapper     (MyBatis Mapper)
-    │       │   └─ vo
-    │       └─ common
-    └─ resources
-        ├─ egovframework
-        ├─ mybatis
-        └─ globals.properties
+    │   └─ egovframework/com/edu/prm
+    │       ├─ web         (Controller)
+    │       ├─ service     (Service)
+    │       └─ service/impl
+    ├─ resources
+    │   └─ egovframework/mapper/com/edu/prm
+    └─ webapp/WEB-INF/jsp/egovframework/com/edu/prm
 ```
 ---
 
