@@ -272,3 +272,5 @@ scripts\\db\\setup-db.bat
 기본 비밀번호(로컬 공통):
 - DEV: `epms_dev_pass1!`
 - PROD: `epms_prod_pass1!`
+
+Test CI trigger: 2026-02-03 11:22 KST
