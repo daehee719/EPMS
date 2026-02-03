@@ -11,6 +11,11 @@ pipeline {
     maven 'maven-system'
   }
   stages {
+    stage('Jenkinsfile Check') {
+      steps {
+        echo 'JENKINSFILE VERSION: 2026-02-03 11:32'
+      }
+    }
     stage('Checkout') {
       steps {
         checkout scm
