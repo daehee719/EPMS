@@ -10,3 +10,6 @@ target/
 
 # Logs
 *.log
+
+# Local agent instructions
+AGENTS.md
