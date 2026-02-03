@@ -16,6 +16,12 @@ public class ProgramManageVO extends ComDefaultVO {
     private String regDt;
     private String updId;
     private String updDt;
+    private String filterStartDate;
+    private String filterEndDate;
+    private String recruitStatus;
+    private Integer capacityMin;
+    private Integer capacityMax;
+    private String regSort;
 
     public String getProgramCode() {
         return programCode;
@@ -103,5 +109,53 @@ public class ProgramManageVO extends ComDefaultVO {
 
     public void setUpdDt(String updDt) {
         this.updDt = updDt;
+    }
+
+    public String getFilterStartDate() {
+        return filterStartDate;
+    }
+
+    public void setFilterStartDate(String filterStartDate) {
+        this.filterStartDate = filterStartDate;
+    }
+
+    public String getFilterEndDate() {
+        return filterEndDate;
+    }
+
+    public void setFilterEndDate(String filterEndDate) {
+        this.filterEndDate = filterEndDate;
+    }
+
+    public String getRecruitStatus() {
+        return recruitStatus;
+    }
+
+    public void setRecruitStatus(String recruitStatus) {
+        this.recruitStatus = recruitStatus;
+    }
+
+    public Integer getCapacityMin() {
+        return capacityMin;
+    }
+
+    public void setCapacityMin(Integer capacityMin) {
+        this.capacityMin = capacityMin;
+    }
+
+    public Integer getCapacityMax() {
+        return capacityMax;
+    }
+
+    public void setCapacityMax(Integer capacityMax) {
+        this.capacityMax = capacityMax;
+    }
+
+    public String getRegSort() {
+        return regSort;
+    }
+
+    public void setRegSort(String regSort) {
+        this.regSort = regSort;
     }
 }

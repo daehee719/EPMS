@@ -8,6 +8,8 @@ public interface EgovProgramManageService {
 
     List<ProgramManageVO> selectProgramList(ProgramManageVO programManageVO) throws Exception;
 
+    List<ProgramManageVO> selectProgramListAll(ProgramManageVO programManageVO) throws Exception;
+
     int selectProgramListTotCnt(ProgramManageVO programManageVO) throws Exception;
 
     void insertProgram(ProgramManage programManage) throws Exception;

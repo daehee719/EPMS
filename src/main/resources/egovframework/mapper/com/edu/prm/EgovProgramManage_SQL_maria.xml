@@ -56,8 +56,92 @@
         <if test="searchCondition == 3">
             AND USE_YN = #{searchKeyword}
         </if>
-         ORDER BY REG_DT DESC, PROGRAM_CODE DESC
+        <if test="filterStartDate != null and filterStartDate != ''">
+            AND START_DATE &gt;= #{filterStartDate}
+        </if>
+        <if test="filterEndDate != null and filterEndDate != ''">
+            AND END_DATE &lt;= #{filterEndDate}
+        </if>
+        <if test="recruitStatus != null and recruitStatus != ''">
+            <choose>
+                <when test="recruitStatus == 'OPEN'">
+                    AND (END_DATE IS NULL OR END_DATE &gt;= CURDATE())
+                </when>
+                <when test="recruitStatus == 'CLOSED'">
+                    AND END_DATE IS NOT NULL AND END_DATE &lt; CURDATE()
+                </when>
+            </choose>
+        </if>
+        <if test="capacityMin != null">
+            AND CAPACITY &gt;= #{capacityMin}
+        </if>
+        <if test="capacityMax != null">
+            AND CAPACITY &lt;= #{capacityMax}
+        </if>
+        <choose>
+            <when test="regSort == 'old'">
+                ORDER BY REG_DT ASC, PROGRAM_CODE ASC
+            </when>
+            <otherwise>
+                ORDER BY REG_DT DESC, PROGRAM_CODE DESC
+            </otherwise>
+        </choose>
          LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+    </select>
+
+    <select id="selectProgramListAll" parameterType="egovframework.com.edu.prm.service.ProgramManageVO" resultMap="program">
+        SELECT PROGRAM_CODE,
+               PROGRAM_NAME,
+               START_DATE,
+               END_DATE,
+               CAPACITY,
+               USE_YN,
+               DESCRIPTION,
+               REG_ID,
+               REG_DT,
+               UPD_ID,
+               UPD_DT
+          FROM ADM_PROGRAM
+         WHERE 1=1
+        <if test="searchCondition == 1">
+            AND PROGRAM_CODE LIKE CONCAT('%', #{searchKeyword}, '%')
+        </if>
+        <if test="searchCondition == 2">
+            AND PROGRAM_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+        </if>
+        <if test="searchCondition == 3">
+            AND USE_YN = #{searchKeyword}
+        </if>
+        <if test="filterStartDate != null and filterStartDate != ''">
+            AND START_DATE &gt;= #{filterStartDate}
+        </if>
+        <if test="filterEndDate != null and filterEndDate != ''">
+            AND END_DATE &lt;= #{filterEndDate}
+        </if>
+        <if test="recruitStatus != null and recruitStatus != ''">
+            <choose>
+                <when test="recruitStatus == 'OPEN'">
+                    AND (END_DATE IS NULL OR END_DATE &gt;= CURDATE())
+                </when>
+                <when test="recruitStatus == 'CLOSED'">
+                    AND END_DATE IS NOT NULL AND END_DATE &lt; CURDATE()
+                </when>
+            </choose>
+        </if>
+        <if test="capacityMin != null">
+            AND CAPACITY &gt;= #{capacityMin}
+        </if>
+        <if test="capacityMax != null">
+            AND CAPACITY &lt;= #{capacityMax}
+        </if>
+        <choose>
+            <when test="regSort == 'old'">
+                ORDER BY REG_DT ASC, PROGRAM_CODE ASC
+            </when>
+            <otherwise>
+                ORDER BY REG_DT DESC, PROGRAM_CODE DESC
+            </otherwise>
+        </choose>
     </select>
 
     <select id="selectProgramListTotCnt" parameterType="egovframework.com.edu.prm.service.ProgramManageVO" resultType="int">
@@ -72,6 +156,28 @@
         </if>
         <if test="searchCondition == 3">
             AND USE_YN = #{searchKeyword}
+        </if>
+        <if test="filterStartDate != null and filterStartDate != ''">
+            AND START_DATE &gt;= #{filterStartDate}
+        </if>
+        <if test="filterEndDate != null and filterEndDate != ''">
+            AND END_DATE &lt;= #{filterEndDate}
+        </if>
+        <if test="recruitStatus != null and recruitStatus != ''">
+            <choose>
+                <when test="recruitStatus == 'OPEN'">
+                    AND (END_DATE IS NULL OR END_DATE &gt;= CURDATE())
+                </when>
+                <when test="recruitStatus == 'CLOSED'">
+                    AND END_DATE IS NOT NULL AND END_DATE &lt; CURDATE()
+                </when>
+            </choose>
+        </if>
+        <if test="capacityMin != null">
+            AND CAPACITY &gt;= #{capacityMin}
+        </if>
+        <if test="capacityMax != null">
+            AND CAPACITY &lt;= #{capacityMax}
         </if>
     </select>
 

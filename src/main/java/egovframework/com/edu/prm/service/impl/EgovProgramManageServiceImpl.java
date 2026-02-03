@@ -28,6 +28,11 @@ public class EgovProgramManageServiceImpl extends EgovAbstractServiceImpl implem
     }
 
     @Override
+    public List<ProgramManageVO> selectProgramListAll(ProgramManageVO programManageVO) throws Exception {
+        return programManageDAO.selectProgramListAll(programManageVO);
+    }
+
+    @Override
     public int selectProgramListTotCnt(ProgramManageVO programManageVO) throws Exception {
         return programManageDAO.selectProgramListTotCnt(programManageVO);
     }

@@ -19,6 +19,10 @@ public class ProgramManageDAO extends EgovComAbstractDAO {
         return selectList("programManageDAO.selectProgramList", programManageVO);
     }
 
+    public List<ProgramManageVO> selectProgramListAll(ProgramManageVO programManageVO) throws Exception {
+        return selectList("programManageDAO.selectProgramListAll", programManageVO);
+    }
+
     public int selectProgramListTotCnt(ProgramManageVO programManageVO) throws Exception {
         return (Integer) selectOne("programManageDAO.selectProgramListTotCnt", programManageVO);
     }

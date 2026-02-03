@@ -32,6 +32,16 @@ function fnDetail(programCode){
 function fnCreate(){
     location.href = "<c:url value='/adm/program/form.do'/>";
 }
+
+function fnDownloadCsv(){
+    document.listForm.action = "<c:url value='/adm/program/export.csv'/>";
+    document.listForm.submit();
+}
+
+function fnDownloadXlsx(){
+    document.listForm.action = "<c:url value='/adm/program/export.xlsx'/>";
+    document.listForm.submit();
+}
 </script>
 </head>
 <body>
@@ -53,6 +63,32 @@ function fnCreate(){
                 <input class="s_input" name="searchKeyword" type="text" size="30" value="<c:out value='${programVO.searchKeyword}'/>" />
                 <input type="button" class="s_btn" value="조회" onClick="fnSearch();" />
                 <span class="btn_b"><a href="#" onClick="fnCreate();return false;">등록</a></span>
+                <span class="btn_b"><a href="<c:url value='/adm/program/upload.do'/>">대량업로드</a></span>
+                <span class="btn_b"><a href="#" onClick="fnDownloadCsv();return false;">CSV 다운로드</a></span>
+                <span class="btn_b"><a href="#" onClick="fnDownloadXlsx();return false;">엑셀 다운로드</a></span>
+            </li>
+            <li>
+                <label>기간</label>
+                <input type="date" name="filterStartDate" value="<c:out value='${programVO.filterStartDate}'/>" />
+                ~
+                <input type="date" name="filterEndDate" value="<c:out value='${programVO.filterEndDate}'/>" />
+            </li>
+            <li>
+                <label>모집상태</label>
+                <select name="recruitStatus">
+                    <option value="" <c:if test="${empty programVO.recruitStatus}">selected</c:if>>전체</option>
+                    <option value="OPEN" <c:if test="${programVO.recruitStatus == 'OPEN'}">selected</c:if>>모집중</option>
+                    <option value="CLOSED" <c:if test="${programVO.recruitStatus == 'CLOSED'}">selected</c:if>>모집마감</option>
+                </select>
+                <label>정원</label>
+                <input class="s_input" name="capacityMin" type="number" min="0" style="width:90px;" value="<c:out value='${programVO.capacityMin}'/>" />
+                ~
+                <input class="s_input" name="capacityMax" type="number" min="0" style="width:90px;" value="<c:out value='${programVO.capacityMax}'/>" />
+                <label>등록일</label>
+                <select name="regSort">
+                    <option value="new" <c:if test="${programVO.regSort != 'old'}">selected</c:if>>최신순</option>
+                    <option value="old" <c:if test="${programVO.regSort == 'old'}">selected</c:if>>오래된순</option>
+                </select>
             </li>
         </ul>
     </div>

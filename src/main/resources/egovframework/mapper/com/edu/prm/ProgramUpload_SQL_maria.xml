@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="programUploadDAO">
+
+    <insert id="insertUploadJob" parameterType="map">
+        INSERT INTO ADM_UPLOAD_JOB (
+            JOB_ID, FILE_NAME, FILE_TYPE, STATUS, TOTAL_COUNT, SUCCESS_COUNT, ERROR_COUNT,
+            MESSAGE, START_DT, END_DT, REG_ID, REG_DT
+        ) VALUES (
+            #{jobId}, #{fileName}, #{fileType}, #{status}, 0, 0, 0,
+            #{message}, NULL, NULL, #{regId}, NOW()
+        )
+    </insert>
+
+    <update id="updateUploadJob" parameterType="map">
+        UPDATE ADM_UPLOAD_JOB
+           SET STATUS = #{status}
+             , TOTAL_COUNT = #{totalCount}
+             , SUCCESS_COUNT = #{successCount}
+             , ERROR_COUNT = #{errorCount}
+             , MESSAGE = #{message}
+             , START_DT = #{startDt}
+             , END_DT = #{endDt}
+         WHERE JOB_ID = #{jobId}
+    </update>
+
+    <select id="selectUploadJob" parameterType="string" resultType="map">
+        SELECT JOB_ID AS jobId,
+               FILE_NAME AS fileName,
+               FILE_TYPE AS fileType,
+               STATUS AS status,
+               TOTAL_COUNT AS totalCount,
+               SUCCESS_COUNT AS successCount,
+               ERROR_COUNT AS errorCount,
+               MESSAGE AS message,
+               START_DT AS startDt,
+               END_DT AS endDt,
+               REG_ID AS regId,
+               REG_DT AS regDt
+          FROM ADM_UPLOAD_JOB
+         WHERE JOB_ID = #{jobId}
+    </select>
+
+    <insert id="insertUploadError" parameterType="map">
+        INSERT INTO ADM_UPLOAD_ERROR (
+            JOB_ID, ROW_NO, FIELD_NAME, ERROR_MESSAGE, RAW_DATA, REG_DT
+        ) VALUES (
+            #{jobId}, #{rowNo}, #{fieldName}, #{errorMessage}, #{rawData}, NOW()
+        )
+    </insert>
+
+    <insert id="insertProgramStaging" parameterType="map">
+        INSERT INTO ADM_PROGRAM_STG (
+            JOB_ID, PROGRAM_CODE, PROGRAM_NAME, START_DATE, END_DATE, CAPACITY, USE_YN,
+            DESCRIPTION, REG_ID, REG_DT, UPD_ID, UPD_DT
+        ) VALUES (
+            #{jobId}, #{programCode}, #{programName}, #{startDate}, #{endDate}, #{capacity}, #{useYn},
+            #{description}, #{regId}, #{regDt}, #{updId}, #{updDt}
+        )
+    </insert>
+
+    <delete id="deleteProgramStaging" parameterType="string">
+        DELETE FROM ADM_PROGRAM_STG WHERE JOB_ID = #{jobId}
+    </delete>
+
+    <insert id="mergeProgramFromStaging" parameterType="string">
+        INSERT INTO ADM_PROGRAM (
+            PROGRAM_CODE, PROGRAM_NAME, START_DATE, END_DATE, CAPACITY, USE_YN, DESCRIPTION,
+            REG_ID, REG_DT, UPD_ID, UPD_DT
+        )
+        SELECT PROGRAM_CODE, PROGRAM_NAME, START_DATE, END_DATE, CAPACITY, USE_YN, DESCRIPTION,
+               REG_ID, REG_DT, UPD_ID, UPD_DT
+          FROM ADM_PROGRAM_STG
+         WHERE JOB_ID = #{jobId}
+        ON DUPLICATE KEY UPDATE
+            PROGRAM_NAME = VALUES(PROGRAM_NAME),
+            START_DATE = VALUES(START_DATE),
+            END_DATE = VALUES(END_DATE),
+            CAPACITY = VALUES(CAPACITY),
+            USE_YN = VALUES(USE_YN),
+            DESCRIPTION = VALUES(DESCRIPTION),
+            UPD_ID = VALUES(UPD_ID),
+            UPD_DT = VALUES(UPD_DT)
+    </insert>
+
+</mapper>
