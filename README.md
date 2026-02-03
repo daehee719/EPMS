@@ -109,6 +109,21 @@ EduAdmin은 공공·교육기관에서 운영하는
 - `adm_upload_error` : 업로드 오류 상세
 - `com_code` / `com_code_detail` : 공통코드 관리
 
+### adm_program 테이블 구조
+| 컬럼 | 타입 | 설명 |
+|---|---|---|
+| `PROGRAM_CODE` | VARCHAR(30) | 프로그램 코드 (PK) |
+| `PROGRAM_NAME` | VARCHAR(200) | 프로그램 명칭 |
+| `START_DATE` | DATE | 시작일 |
+| `END_DATE` | DATE | 종료일 |
+| `CAPACITY` | NUMERIC(10) | 정원 |
+| `USE_YN` | CHAR(1) | 사용 여부 (Y/N) |
+| `DESCRIPTION` | VARCHAR(1000) | 설명 |
+| `REG_ID` | VARCHAR(20) | 등록자 ID |
+| `REG_DT` | DATETIME | 등록일시 |
+| `UPD_ID` | VARCHAR(20) | 수정자 ID |
+| `UPD_DT` | DATETIME | 수정일시 |
+
 ---
 
 ## 5. 엑셀 업로드 정책

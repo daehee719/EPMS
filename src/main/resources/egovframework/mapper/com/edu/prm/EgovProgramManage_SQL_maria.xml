@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="programManageDAO">
+
+    <resultMap id="program" type="egovframework.com.edu.prm.service.ProgramManageVO">
+        <result property="programCode" column="PROGRAM_CODE"/>
+        <result property="programName" column="PROGRAM_NAME"/>
+        <result property="startDate" column="START_DATE"/>
+        <result property="endDate" column="END_DATE"/>
+        <result property="capacity" column="CAPACITY"/>
+        <result property="useYn" column="USE_YN"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="regId" column="REG_ID"/>
+        <result property="regDt" column="REG_DT"/>
+        <result property="updId" column="UPD_ID"/>
+        <result property="updDt" column="UPD_DT"/>
+    </resultMap>
+
+    <select id="selectProgram" parameterType="egovframework.com.edu.prm.service.ProgramManageVO" resultMap="program">
+        SELECT PROGRAM_CODE,
+               PROGRAM_NAME,
+               START_DATE,
+               END_DATE,
+               CAPACITY,
+               USE_YN,
+               DESCRIPTION,
+               REG_ID,
+               REG_DT,
+               UPD_ID,
+               UPD_DT
+          FROM ADM_PROGRAM
+         WHERE PROGRAM_CODE = #{programCode}
+    </select>
+
+    <select id="selectProgramList" parameterType="egovframework.com.edu.prm.service.ProgramManageVO" resultMap="program">
+        SELECT PROGRAM_CODE,
+               PROGRAM_NAME,
+               START_DATE,
+               END_DATE,
+               CAPACITY,
+               USE_YN,
+               DESCRIPTION,
+               REG_ID,
+               REG_DT,
+               UPD_ID,
+               UPD_DT
+          FROM ADM_PROGRAM
+         WHERE 1=1
+        <if test="searchCondition == 1">
+            AND PROGRAM_CODE LIKE CONCAT('%', #{searchKeyword}, '%')
+        </if>
+        <if test="searchCondition == 2">
+            AND PROGRAM_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+        </if>
+        <if test="searchCondition == 3">
+            AND USE_YN = #{searchKeyword}
+        </if>
+         ORDER BY REG_DT DESC, PROGRAM_CODE DESC
+         LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+    </select>
+
+    <select id="selectProgramListTotCnt" parameterType="egovframework.com.edu.prm.service.ProgramManageVO" resultType="int">
+        SELECT COUNT(*)
+          FROM ADM_PROGRAM
+         WHERE 1=1
+        <if test="searchCondition == 1">
+            AND PROGRAM_CODE LIKE CONCAT('%', #{searchKeyword}, '%')
+        </if>
+        <if test="searchCondition == 2">
+            AND PROGRAM_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+        </if>
+        <if test="searchCondition == 3">
+            AND USE_YN = #{searchKeyword}
+        </if>
+    </select>
+
+    <insert id="insertProgram" parameterType="egovframework.com.edu.prm.service.ProgramManage">
+        INSERT INTO ADM_PROGRAM (
+              PROGRAM_CODE
+            , PROGRAM_NAME
+            , START_DATE
+            , END_DATE
+            , CAPACITY
+            , USE_YN
+            , DESCRIPTION
+            , REG_ID
+            , REG_DT
+            , UPD_ID
+            , UPD_DT
+        ) VALUES (
+              #{programCode}
+            , #{programName}
+            , #{startDate}
+            , #{endDate}
+            , #{capacity}
+            , #{useYn}
+            , #{description}
+            , #{regId}
+            , NOW()
+            , #{updId}
+            , NOW()
+        )
+    </insert>
+
+    <update id="updateProgram" parameterType="egovframework.com.edu.prm.service.ProgramManage">
+        UPDATE ADM_PROGRAM
+           SET PROGRAM_NAME = #{programName}
+             , START_DATE = #{startDate}
+             , END_DATE = #{endDate}
+             , CAPACITY = #{capacity}
+             , USE_YN = #{useYn}
+             , DESCRIPTION = #{description}
+             , UPD_ID = #{updId}
+             , UPD_DT = NOW()
+         WHERE PROGRAM_CODE = #{programCode}
+    </update>
+
+    <delete id="deleteProgram" parameterType="egovframework.com.edu.prm.service.ProgramManage">
+        DELETE FROM ADM_PROGRAM
+         WHERE PROGRAM_CODE = #{programCode}
+    </delete>
+
+</mapper>

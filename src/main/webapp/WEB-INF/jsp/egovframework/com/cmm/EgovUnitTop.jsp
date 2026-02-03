@@ -177,6 +177,28 @@
 		<h1>
 			<a href="<c:url value='/EgovContent.do' />" target="_content"><img src="<c:url value='/images/egovframework/com/cmm/main/top_logo.png' />" alt="eGovframe"></a>
 		</h1>
+		<div style="margin-top:6px;">
+			<ul style="list-style:none;margin:0;padding:0;display:flex;gap:14px;align-items:center;">
+				<c:choose>
+					<c:when test="${loginVO == null}">
+						<li><a href="<c:url value='/uat/uia/egovLoginUsr.do'/>" target="_content">로그인</a></li>
+						<li><a href="<c:url value='/uss/umt/EgovMberSbscrbSelect.do'/>" target="_content">회원가입</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="<c:url value='/uat/uia/actionLogout.do'/>" target="_content">로그아웃</a></li>
+					</c:otherwise>
+				</c:choose>
+				<c:if test="${loginVO != null}">
+					<c:if test="${loginVO.userSe == 'USR'}">
+						<li><a href="<c:url value='/adm/program/manage.do'/>" target="_content">프로그램 관리</a></li>
+						<li><a href="<c:url value='/edu/program/list.do'/>" target="_content">프로그램 목록</a></li>
+					</c:if>
+					<c:if test="${loginVO.userSe == 'GNR'}">
+						<li><a href="<c:url value='/edu/program/list.do'/>" target="_content">프로그램 목록</a></li>
+					</c:if>
+				</c:if>
+			</ul>
+		</div>
 		<div style="margin-top:4px;">
 			<strong class="top_title_strong"><spring:message code="comCmm.top.title"/></strong>
 		    <span id="sessionInfo">

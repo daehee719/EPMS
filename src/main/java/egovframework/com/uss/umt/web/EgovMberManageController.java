@@ -424,6 +424,17 @@ public class EgovMberManageController {
     }
 
     /**
+     * 회원가입 유형 선택 화면
+     *
+     * @return uss/umt/EgovMberSbscrbSelect
+     * @throws Exception
+     */
+    @RequestMapping("/uss/umt/EgovMberSbscrbSelect.do")
+    public String sbscrbSelectView() throws Exception {
+        return "egovframework/com/uss/umt/EgovMberSbscrbSelect";
+    }
+
+    /**
      * 일반회원가입신청등록처리후로그인화면으로 이동한다.
      *
      * @param mberManageVO 일반회원가입신청정보
