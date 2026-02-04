@@ -3,7 +3,7 @@ package egovframework.com.cop.smt.sam.web;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;

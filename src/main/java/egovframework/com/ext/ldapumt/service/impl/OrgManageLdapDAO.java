@@ -21,7 +21,7 @@ package egovframework.com.ext.ldapumt.service.impl;
 import java.util.ArrayList;
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.BasicAttribute;

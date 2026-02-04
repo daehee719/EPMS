@@ -2,7 +2,7 @@ package egovframework.com.sym.cal.service;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 /**
  * 휴일 모델 클래스

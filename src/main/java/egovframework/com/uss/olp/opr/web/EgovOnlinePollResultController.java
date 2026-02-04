@@ -2,7 +2,7 @@ package egovframework.com.uss.olp.opr.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.springframework.stereotype.Controller;

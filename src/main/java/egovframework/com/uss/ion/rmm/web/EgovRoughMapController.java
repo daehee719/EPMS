@@ -2,7 +2,7 @@ package egovframework.com.uss.ion.rmm.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
@@ -14,7 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
@@ -59,9 +59,9 @@ public class EgovRoughMapController {
     @Resource(name="propertiesService")
     protected EgovPropertyService propertyService;
 
-    /** DefaultBeanValidator */
+    /** Validator */
     @Autowired
-    private DefaultBeanValidator beanValidator;
+    private Validator beanValidator;
 
     /**
      * 약도 목록 조회 Service interface 호출 및 결과를 반환한다.

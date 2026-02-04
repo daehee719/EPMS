@@ -3,7 +3,7 @@ package egovframework.com.cop.bbs.web;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 import org.egovframe.rte.fdl.property.EgovPropertyService;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.EgovComponentChecker;
@@ -82,7 +82,7 @@ public class EgovBBSMasterController {
 
 
     @Autowired
-    private DefaultBeanValidator beanValidator;
+    private Validator beanValidator;
 
     //Logger log = Logger.getLogger(this.getClass());
     

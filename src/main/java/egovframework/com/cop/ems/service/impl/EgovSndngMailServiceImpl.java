@@ -1,6 +1,6 @@
 package egovframework.com.cop.ems.service.impl;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.apache.commons.mail.EmailAttachment;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;

@@ -3,7 +3,7 @@ package egovframework.com.utl.slm;
 import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * @Class Name : EgovMultiLoginPreventor.java

@@ -2,7 +2,7 @@ package egovframework.com.uss.sam.stp.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -14,7 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
@@ -60,7 +60,7 @@ public class EgovStplatManageController {
 
 	/** beanValidator Member Variable */
 	@Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 
     /**
      * 개별 배포시 메인메뉴를 조회한다.

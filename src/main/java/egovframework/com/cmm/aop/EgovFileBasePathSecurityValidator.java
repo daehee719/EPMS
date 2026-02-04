@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import egovframework.com.cmm.service.EgovProperties;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * EgovFileBasePathSecurityValidator Class 구현
@@ -28,8 +29,9 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 
-@Slf4j
 public class EgovFileBasePathSecurityValidator {
+
+	private static final Logger log = LoggerFactory.getLogger(EgovFileBasePathSecurityValidator.class);
 
     public static boolean validate(String basePath) {
     	

@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
@@ -79,7 +79,7 @@ public class EgovCcmZipManageController {
 	protected EgovPropertyService propertiesService;
 
 	@Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 
 	/**
 	 * 우편번호 찾기 팝업 메인창을 호출한다.

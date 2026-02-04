@@ -1,6 +1,6 @@
 package egovframework.com.cop.sms.service.impl;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import org.slf4j.Logger;

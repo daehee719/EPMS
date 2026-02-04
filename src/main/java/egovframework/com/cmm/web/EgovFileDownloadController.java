@@ -10,12 +10,12 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.egovframe.rte.fdl.cryptography.EgovEnvCryptoService;
+import org.egovframe.rte.fdl.crypto.EgovEnvCryptoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;

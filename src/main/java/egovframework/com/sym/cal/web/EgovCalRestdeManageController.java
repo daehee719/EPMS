@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.apache.commons.collections.map.ListOrderedMap;
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.LoginVO;
@@ -66,7 +66,7 @@ public class EgovCalRestdeManageController {
 	private EgovCmmUseService cmmUseService;
 
 	@Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 
 	public BindingResult checkRestdeWithValidator(Restde restde, BindingResult bindingResult){
 

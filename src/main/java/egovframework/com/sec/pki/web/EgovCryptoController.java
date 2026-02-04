@@ -2,10 +2,10 @@ package egovframework.com.sec.pki.web;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
-import org.egovframe.rte.fdl.cryptography.EgovEnvCryptoService;
-import org.egovframe.rte.fdl.cryptography.EgovPasswordEncoder;
+import org.egovframe.rte.fdl.crypto.EgovEnvCryptoService;
+import org.egovframe.rte.fdl.crypto.EgovPasswordEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

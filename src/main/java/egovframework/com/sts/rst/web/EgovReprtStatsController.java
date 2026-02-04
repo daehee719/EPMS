@@ -21,7 +21,7 @@
 
 package egovframework.com.sts.rst.web;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -32,7 +32,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.EgovMessageSource;
@@ -67,7 +67,7 @@ public class EgovReprtStatsController {
     private EgovIdGnrService egovReprtStatsIdGnrService;
 	
     @Autowired
-	private DefaultBeanValidator beanValidator;    
+	private Validator beanValidator;    
     
     /**
 	 * 보고서 통계 목록화면 이동

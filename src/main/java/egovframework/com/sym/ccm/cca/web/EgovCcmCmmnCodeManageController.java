@@ -2,7 +2,7 @@ package egovframework.com.sym.ccm.cca.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -12,7 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
@@ -62,7 +62,7 @@ public class EgovCcmCmmnCodeManageController {
 	EgovMessageSource egovMessageSource;
 	
 	@Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 	
 	
 	

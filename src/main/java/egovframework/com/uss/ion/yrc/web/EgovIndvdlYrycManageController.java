@@ -2,7 +2,7 @@ package egovframework.com.uss.ion.yrc.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.string.EgovDateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
@@ -47,7 +47,7 @@ public class EgovIndvdlYrycManageController {
     private EgovIndvdlYrycManageService egovIndvdlYrycManageService;
 
     @Autowired
-	 private DefaultBeanValidator beanValidator;
+	 private Validator beanValidator;
 
     /**
      * 개인연차관리정보를 관리하기 위해 등록된 개인연차관리 목록을 조회한다.

@@ -15,7 +15,7 @@ package egovframework.com.uss.ion.bnr.service.impl;
 import java.io.File;
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import org.slf4j.Logger;

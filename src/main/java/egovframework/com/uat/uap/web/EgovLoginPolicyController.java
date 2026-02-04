@@ -21,7 +21,7 @@
 
 package egovframework.com.uat.uap.web;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
@@ -56,7 +56,7 @@ public class EgovLoginPolicyController {
 	EgovLoginPolicyService egovLoginPolicyService;
 	
     @Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
     
 	/**
 	 * 로그인정책 목록 조회화면으로 이동한다.

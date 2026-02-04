@@ -21,7 +21,6 @@ package egovframework.com.utl.wed.filter;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -54,8 +53,8 @@ public class DefaultFileSaveManager implements FileSaveManager {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EgovProperties.class);
 	
 	@Override
-	public String saveFile(FileItem fileItem, String imageBaseDir) {
-		String originalFileName = FilenameUtils.getName(fileItem.getName());
+	public String saveFile(java.io.InputStream data, String originalFilename, String imageBaseDir) {
+		String originalFileName = FilenameUtils.getName(originalFilename);
 		String relUrl;
 		// filename
 		String subDir = File.separator + DirectoryPathManager.getDirectoryPathByDateType(DirectoryPathManager.DIR_DATE_TYPE.DATE_POLICY_YYYY_MM);
@@ -65,7 +64,7 @@ public class DefaultFileSaveManager implements FileSaveManager {
 		File fileToSave = DirectoryPathManager.getUniqueFile(imageBaseDir, subDir, saveFileName);
 		
 		try {
-			FileUtils.writeByteArrayToFile(fileToSave, fileItem.get());
+			FileUtils.copyInputStreamToFile(data, fileToSave);
 		} catch (IOException e) {
 			//KISA 보안약점 조치 (2018-10-29, 윤창원)
 			LOGGER.debug("File IO exception" + e.getMessage());

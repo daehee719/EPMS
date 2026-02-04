@@ -3,9 +3,9 @@ package egovframework.com.uss.olp.qtm.web;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.egovframe.rte.fdl.property.EgovPropertyService;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.ComDefaultVO;
 import egovframework.com.cmm.EgovMessageSource;
@@ -60,7 +60,7 @@ public class EgovQustnrTmplatManageController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EgovQustnrTmplatManageController.class);
 
 	@Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 
 	/** EgovMessageSource */
 	@Resource(name = "egovMessageSource")

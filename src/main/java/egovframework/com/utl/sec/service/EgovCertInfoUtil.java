@@ -1,6 +1,6 @@
 package egovframework.com.utl.sec.service;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.dsjdf.jdf.Config;
 import com.dsjdf.jdf.Configuration;

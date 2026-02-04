@@ -18,8 +18,6 @@
  */
 package egovframework.com.ext.easybatch.item;
 
-import java.util.List;
-
 import javax.sql.DataSource;
 
 import org.egovframe.rte.bat.core.item.database.EgovJdbcBatchItemWriter;
@@ -36,12 +34,13 @@ import org.springframework.batch.item.ItemStream;
 import org.springframework.batch.item.ItemStreamException;
 import org.springframework.batch.item.ItemStreamWriter;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.file.FlatFileItemWriter;
 import org.springframework.batch.item.file.transform.DelimitedLineAggregator;
 import org.springframework.batch.item.file.transform.FieldExtractor;
 import org.springframework.batch.item.file.transform.LineAggregator;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
+import org.springframework.core.io.WritableResource;
 
 /**
  * @author 서경석
@@ -93,7 +92,7 @@ public class DefaultItemWriter<T> implements ItemStreamWriter<T> {
 	private String writerResourceType;
 
 	// File 입력인 경우 사용되는 설정
-	private Resource resource; // 공통
+	private WritableResource resource; // 공통
 	private String resourceName; // 공통
 	private String[] fieldNames; // 공통
 	private String names; // 공통
@@ -152,7 +151,7 @@ public class DefaultItemWriter<T> implements ItemStreamWriter<T> {
 	}
 
 	@Override
-	public void write(List<? extends T> items) throws Exception {
+	public void write(Chunk<? extends T> items) throws Exception {
 		this.writer.write(items);
 	}
 
@@ -191,7 +190,7 @@ public class DefaultItemWriter<T> implements ItemStreamWriter<T> {
 					}
 				}
 
-				this.resource = new FileSystemResource(resourceName);
+			this.resource = new FileSystemResource(resourceName);
 				this.fieldNames = names.split(",");
 
 			} else if (JDBC_DB_TYPE.equalsIgnoreCase(this.writerResourceType)) {

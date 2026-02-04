@@ -2,7 +2,7 @@ package egovframework.com.cop.sms.web;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -13,7 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
@@ -55,7 +55,7 @@ public class EgovSmsInfoController {
 	EgovMessageSource egovMessageSource;
 
 	@Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 
 	//private static final Logger LOGGER = LoggerFactory.getLogger(EgovSmsInfoController.class);
 

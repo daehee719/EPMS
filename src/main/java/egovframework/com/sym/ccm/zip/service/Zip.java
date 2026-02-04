@@ -2,7 +2,7 @@ package egovframework.com.sym.ccm.zip.service;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 /**
  * 우편번호 모델 클래스

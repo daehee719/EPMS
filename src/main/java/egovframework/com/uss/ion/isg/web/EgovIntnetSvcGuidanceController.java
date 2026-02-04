@@ -25,7 +25,7 @@ package egovframework.com.uss.ion.isg.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -36,7 +36,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
@@ -65,7 +65,7 @@ public class EgovIntnetSvcGuidanceController {
     private EgovIdGnrService egovIntnetSvcGuidanceIdGnrService;
 
     @Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 
     /**
 	 * 인터넷서비스안내 목록화면 이동

@@ -21,10 +21,10 @@ package egovframework.com.ext.msg.server.config;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.websocket.HandshakeResponse;
-import javax.websocket.server.HandshakeRequest;
-import javax.websocket.server.ServerEndpointConfig;
-import javax.websocket.server.ServerEndpointConfig.Configurator;
+import jakarta.websocket.HandshakeResponse;
+import jakarta.websocket.server.HandshakeRequest;
+import jakarta.websocket.server.ServerEndpointConfig;
+import jakarta.websocket.server.ServerEndpointConfig.Configurator;
 
 import egovframework.com.ext.msg.server.ChatServerEndPoint;
 

@@ -2,7 +2,7 @@ package egovframework.com.uss.cmt.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 import org.egovframe.rte.fdl.property.EgovPropertyService;
@@ -52,9 +52,9 @@ public class EgovCmtManageController {
     @Resource(name = "propertiesService")
     protected EgovPropertyService propertiesService;
 
-    /** DefaultBeanValidator beanValidator */
+    /** Validator beanValidator */
     //	@Autowired
-    //	private DefaultBeanValidator beanValidator;
+    //	private Validator beanValidator;
 
     /** egovCmtManageIdGnrService */
     @Resource(name = "egovCmtManageIdGnrService")

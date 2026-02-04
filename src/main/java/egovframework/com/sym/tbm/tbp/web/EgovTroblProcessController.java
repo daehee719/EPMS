@@ -1,7 +1,7 @@
 package egovframework.com.sym.tbm.tbp.web;
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.EgovMessageSource;
@@ -59,7 +59,7 @@ public class EgovTroblProcessController {
 	private EgovTroblProcessService egovTroblProcessService;
 
     @Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 
     @Resource(name = "EgovCmmUseService")
     EgovCmmUseService EgovCmmUseService;

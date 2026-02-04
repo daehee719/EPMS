@@ -1,7 +1,7 @@
 package egovframework.com.utl.slm;
 
-import javax.servlet.http.HttpSessionBindingEvent;
-import javax.servlet.http.HttpSessionBindingListener;
+import jakarta.servlet.http.HttpSessionBindingEvent;
+import jakarta.servlet.http.HttpSessionBindingListener;
 
 /**
  * @Class Name : EgovHttpSessionBindingListener.java

@@ -23,7 +23,7 @@ import static org.springframework.ldap.query.LdapQueryBuilder.query;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.BasicAttribute;

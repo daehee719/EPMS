@@ -3,7 +3,7 @@ package egovframework.com.dam.per.web;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
@@ -84,7 +84,7 @@ public class EgovKnoPersonalController {
     protected EgovPropertyService propertiesService;
 
 	@Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 
 	/** EgovMessageSource */
     @Resource(name="egovMessageSource")

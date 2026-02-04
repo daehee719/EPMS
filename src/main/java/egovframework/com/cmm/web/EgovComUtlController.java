@@ -5,9 +5,9 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
-import org.egovframe.rte.fdl.cryptography.EgovEnvCryptoService;
+import org.egovframe.rte.fdl.crypto.EgovEnvCryptoService;
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

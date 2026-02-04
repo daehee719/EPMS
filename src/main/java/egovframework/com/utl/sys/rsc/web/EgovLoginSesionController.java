@@ -1,6 +1,6 @@
 package egovframework.com.utl.sys.rsc.web;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -19,22 +19,22 @@
 package egovframework.com.utl.wed.filter;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.Collection;
+import java.util.Collection;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.egovframe.rte.fdl.cryptography.EgovEnvCryptoService;
+import org.egovframe.rte.fdl.crypto.EgovEnvCryptoService;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -124,22 +124,19 @@ public class CkImageSaver {
 	 * @throws IOException
 	 */
 	public void saveAndReturnUrlToClient(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// Parse the request
 		try {
-			FileItemFactory factory = new DiskFileItemFactory();
-
-			// Create a new file upload handler
-			ServletFileUpload upload = new ServletFileUpload(factory);
-
-			List<FileItem> /* FileItem */items = upload.parseRequest(request);
-			// We upload just one file at the same time
-			FileItem uplFile = items.get(0);
+			UploadedFile uploadedFile = resolveUploadedFile(request);
 
 			String errorMessage = null;
 			String relUrl = null;
 
-			if (isAllowFileType(FilenameUtils.getName(uplFile.getName()))) {
-				String uploadFilePath = fileSaveManager.saveFile(uplFile, imageBaseDir);
+			if (uploadedFile == null) {
+				errorMessage = "No file uploaded";
+			} else if (isAllowFileType(FilenameUtils.getName(uploadedFile.originalFilename))) {
+				String uploadFilePath;
+				try (InputStream inputStream = uploadedFile.inputStream) {
+					uploadFilePath = fileSaveManager.saveFile(inputStream, uploadedFile.originalFilename, imageBaseDir);
+				}
 				//System.out.println("===>>> uploadFilePath = "+uploadFilePath);
 				
 				String fileName = uploadFilePath.substring(uploadFilePath.lastIndexOf('/') + 1);
@@ -149,7 +146,7 @@ public class CkImageSaver {
 					    + "/utl/web/imageSrc.do?"
 					    + "path=" + this.encrypt(filePath,request)
 					    + "&physical=" + this.encrypt(fileName,request)
-					    + "&contentType=" + this.encrypt(uplFile.getContentType(),request);
+					    + "&contentType=" + this.encrypt(uploadedFile.contentType,request);
 				
 				//System.out.println("===>>> relUrl = "+relUrl);
 			} else {
@@ -188,8 +185,42 @@ public class CkImageSaver {
 			out.flush();
 			out.close();
 
-		} catch (FileUploadException e) {
+		} catch (Exception e) {
 			log.error(e);
+		}
+	}
+
+	private UploadedFile resolveUploadedFile(HttpServletRequest request) throws Exception {
+		if (request instanceof MultipartHttpServletRequest multipartRequest) {
+			for (MultipartFile file : multipartRequest.getFileMap().values()) {
+				if (file != null && !file.isEmpty()) {
+					return new UploadedFile(file.getOriginalFilename(), file.getContentType(), file.getInputStream());
+				}
+			}
+		}
+
+		Collection<Part> parts = request.getParts();
+		if (parts != null) {
+			for (Part part : parts) {
+				String submittedFileName = part.getSubmittedFileName();
+				if (StringUtils.isNotBlank(submittedFileName) && part.getSize() > 0) {
+					return new UploadedFile(submittedFileName, part.getContentType(), part.getInputStream());
+				}
+			}
+		}
+
+		return null;
+	}
+
+	private static class UploadedFile {
+		private final String originalFilename;
+		private final String contentType;
+		private final InputStream inputStream;
+
+		private UploadedFile(String originalFilename, String contentType, InputStream inputStream) {
+			this.originalFilename = originalFilename;
+			this.contentType = contentType;
+			this.inputStream = inputStream;
 		}
 	}
 

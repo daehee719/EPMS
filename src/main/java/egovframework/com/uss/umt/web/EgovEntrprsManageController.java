@@ -3,8 +3,8 @@ package egovframework.com.uss.umt.web;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 import org.egovframe.rte.fdl.property.EgovPropertyService;
@@ -17,7 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.LoginVO;
@@ -70,9 +70,9 @@ public class EgovEntrprsManageController {
     @Resource(name = "propertiesService")
     protected EgovPropertyService propertiesService;
 
-    /** DefaultBeanValidator beanValidator */
+    /** Validator beanValidator */
     @Autowired
-    private DefaultBeanValidator beanValidator;
+    private Validator beanValidator;
 
     /** 비밀번호 힌트 조회 목록 */
     @ModelAttribute("passwordHint_result")

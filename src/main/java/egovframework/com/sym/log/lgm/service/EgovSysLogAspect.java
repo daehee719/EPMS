@@ -1,6 +1,6 @@
 package egovframework.com.sym.log.lgm.service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.util.StopWatch;

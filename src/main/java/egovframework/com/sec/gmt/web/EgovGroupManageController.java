@@ -1,6 +1,6 @@
 package egovframework.com.sec.gmt.web;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 import org.egovframe.rte.fdl.property.EgovPropertyService;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.SessionVO;
@@ -61,7 +61,7 @@ public class EgovGroupManageController {
     private EgovIdGnrService egovGroupIdGnrService;
     
     @Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
     
     /**
 	 * 그룹 목록화면 이동

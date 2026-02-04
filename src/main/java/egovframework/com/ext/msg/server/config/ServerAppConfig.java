@@ -20,7 +20,7 @@ package egovframework.com.ext.msg.server.config;
 
 import java.util.Map;
 
-import javax.websocket.server.ServerEndpointConfig.Configurator;
+import jakarta.websocket.server.ServerEndpointConfig.Configurator;
 
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;

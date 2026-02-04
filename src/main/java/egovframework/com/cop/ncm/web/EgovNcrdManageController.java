@@ -2,7 +2,7 @@ package egovframework.com.cop.ncm.web;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.annotation.IncludedInfo;
@@ -54,7 +54,7 @@ public class EgovNcrdManageController {
     protected EgovPropertyService propertyService;
 
     @Autowired
-    private DefaultBeanValidator beanValidator;
+    private Validator beanValidator;
 
     //Logger log = Logger.getLogger(this.getClass());
 

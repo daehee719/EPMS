@@ -20,11 +20,11 @@ package egovframework.com.ext.msg.server.model.encoder;
 
 import java.util.Set;
 
-import javax.json.Json;
-import javax.json.JsonArrayBuilder;
-import javax.websocket.EncodeException;
-import javax.websocket.Encoder;
-import javax.websocket.EndpointConfig;
+import jakarta.json.Json;
+import jakarta.json.JsonArrayBuilder;
+import jakarta.websocket.EncodeException;
+import jakarta.websocket.Encoder;
+import jakarta.websocket.EndpointConfig;
 
 import egovframework.com.ext.msg.server.model.ChatMessage;
 import egovframework.com.ext.msg.server.model.Message;

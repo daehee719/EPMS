@@ -2,7 +2,7 @@ package egovframework.com.uss.ion.rec.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -14,7 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
@@ -59,7 +59,7 @@ public class EgovRecomendSiteController {
 
     // Validation 관련
 	@Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 	
 	/**
      * 추천사이트정보 목록을 조회한다.

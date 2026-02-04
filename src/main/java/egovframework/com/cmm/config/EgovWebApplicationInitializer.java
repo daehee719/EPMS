@@ -1,9 +1,9 @@
 package egovframework.com.cmm.config;
 
-import javax.servlet.FilterRegistration;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import jakarta.servlet.FilterRegistration;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRegistration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,10 +48,13 @@ import egovframework.com.utl.wed.filter.CkFilter;
  */
 
 
-public class EgovWebApplicationInitializer implements WebApplicationInitializer {
+/**
+ * Boot 3 전환 후에는 Spring Boot 자동 구성으로 대체된다.
+ * 기존 XML 부트스트랩을 사용하려면 legacy 브랜치에서 유지한다.
+ */
+public class EgovWebApplicationInitializer {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EgovWebApplicationInitializer.class);
-	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		LOGGER.debug("EgovWebApplicationInitializer START-============================================");
 		

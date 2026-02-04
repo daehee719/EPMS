@@ -27,7 +27,7 @@ package egovframework.com.sts.dst.service.impl;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.aspectj.lang.JoinPoint;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;

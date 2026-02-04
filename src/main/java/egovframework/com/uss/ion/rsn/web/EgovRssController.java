@@ -3,7 +3,7 @@ package egovframework.com.uss.ion.rsn.web;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -19,7 +19,7 @@ import egovframework.com.cmm.EgovWebUtil;
 import egovframework.com.cmm.annotation.IncludedInfo;
 import egovframework.com.uss.ion.rsn.service.EgovRssService;
 import egovframework.com.uss.ion.rsn.service.RssInfo;
-//import org.springmodules.validation.commons.DefaultBeanValidator;
+//import org.springframework.validation.Validator;
 /**
  * RSS서비스를 처리하는 Controller Class 구현
  * @author 공통서비스 장동한
@@ -38,7 +38,7 @@ import egovframework.com.uss.ion.rsn.service.RssInfo;
 public class EgovRssController {
 
 //    @Autowired
-//    private DefaultBeanValidator beanValidator;
+//    private Validator beanValidator;
 
     /** EgovMessageSource */
     @Resource(name = "egovMessageSource")

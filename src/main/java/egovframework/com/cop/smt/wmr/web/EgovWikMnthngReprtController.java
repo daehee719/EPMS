@@ -2,7 +2,7 @@ package egovframework.com.cop.smt.wmr.web;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.EgovMessageSource;
@@ -72,7 +72,7 @@ public class EgovWikMnthngReprtController {
     EgovMessageSource egovMessageSource;
 
     @Autowired
-    private DefaultBeanValidator beanValidator;
+    private Validator beanValidator;
 
     // 첨부파일 관련
 	@Resource(name="EgovFileMngService")

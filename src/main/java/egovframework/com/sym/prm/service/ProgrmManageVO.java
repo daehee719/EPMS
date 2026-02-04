@@ -1,6 +1,6 @@
 package egovframework.com.sym.prm.service;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 /** 
  * 프로그램목록 처리를 위한 VO 클래스르를 정의한다

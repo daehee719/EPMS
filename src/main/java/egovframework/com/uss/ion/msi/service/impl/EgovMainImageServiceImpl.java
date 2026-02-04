@@ -18,7 +18,7 @@ package egovframework.com.uss.ion.msi.service.impl;
 import java.io.File;
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import org.slf4j.Logger;

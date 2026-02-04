@@ -4,7 +4,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * EgovAdviceBasePathSecurityValidator Class 구현
@@ -27,8 +28,9 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 
-@Slf4j
 public class EgovAdviceBasePathSecurityValidator {
+
+	private static final Logger log = LoggerFactory.getLogger(EgovAdviceBasePathSecurityValidator.class);
 	
 	public void beforeTargetMethod(JoinPoint thisJoinPoint) {
     	log.debug(" * AdviceBasePathValidator > beforeTargetMethod executed.");

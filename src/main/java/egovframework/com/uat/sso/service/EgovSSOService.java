@@ -2,8 +2,8 @@ package egovframework.com.uat.sso.service;
 
 import java.io.IOException;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 
 import egovframework.com.cmm.LoginVO;
 

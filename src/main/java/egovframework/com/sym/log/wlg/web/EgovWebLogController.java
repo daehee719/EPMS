@@ -2,7 +2,7 @@ package egovframework.com.sym.log.wlg.web;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.apache.commons.collections4.MapUtils;
 import org.egovframe.rte.fdl.property.EgovPropertyService;

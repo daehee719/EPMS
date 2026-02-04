@@ -3,7 +3,7 @@ package egovframework.com.uss.ion.rwd.web;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.EgovMessageSource;
@@ -74,7 +74,7 @@ public class EgovRwardManageController {
 	private EgovFileMngUtil fileUtil;
 
     @Autowired
-	 private DefaultBeanValidator beanValidator;
+	 private Validator beanValidator;
 
     /**
 	 * 포상관리 목록화면 이동

@@ -1,6 +1,6 @@
 package egovframework.com.sym.log.plg.service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;

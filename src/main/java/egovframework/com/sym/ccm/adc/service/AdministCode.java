@@ -2,7 +2,7 @@ package egovframework.com.sym.ccm.adc.service;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 /**
  * 행정코드 모델 클래스

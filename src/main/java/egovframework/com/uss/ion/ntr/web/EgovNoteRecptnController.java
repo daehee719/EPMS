@@ -3,9 +3,9 @@ package egovframework.com.uss.ion.ntr.web;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
@@ -18,7 +18,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-//import org.springmodules.validation.commons.DefaultBeanValidator;
+//import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
@@ -52,7 +52,7 @@ public class EgovNoteRecptnController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EgovNoteRecptnController.class);
 
 //    @Autowired
-//    private DefaultBeanValidator beanValidator;
+//    private Validator beanValidator;
 
     /** EgovMessageSource */
     @Resource(name = "egovMessageSource")

@@ -2,7 +2,7 @@ package egovframework.com.sec.rmt.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 import org.egovframe.rte.fdl.property.EgovPropertyService;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.validation.Validator;
 
 import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.EgovMessageSource;
@@ -74,7 +74,7 @@ public class EgovRoleManageController {
     private EgovIdGnrService egovRoleIdGnrService;
 
     @Autowired
-	private DefaultBeanValidator beanValidator;
+	private Validator beanValidator;
 
     /**
 	 * 롤 목록화면 이동
