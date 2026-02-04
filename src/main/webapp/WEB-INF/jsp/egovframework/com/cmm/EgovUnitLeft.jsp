@@ -36,6 +36,7 @@ link:hover { color: #000000; text-decoration: none; }
 		<c:if test="${sessionScope.loginVO != null && sessionScope.loginVO.userSe == 'USR'}">
 			<li><a href="<c:url value='/adm/program/manage.do'/>" target="_content" class="link">프로그램 관리</a></li>
 			<li><a href="<c:url value='/edu/program/list.do'/>" target="_content" class="link">프로그램 목록</a></li>
+			<li><a href="<c:url value='/sym/ccm/cca/SelectCcmCmmnCodeList.do'/>" target="_content" class="link">공통코드 관리</a></li>
 		</c:if>
 		<c:if test="${sessionScope.loginVO != null && sessionScope.loginVO.userSe == 'GNR'}">
 			<li><a href="<c:url value='/edu/program/list.do'/>" target="_content" class="link">프로그램 목록</a></li>

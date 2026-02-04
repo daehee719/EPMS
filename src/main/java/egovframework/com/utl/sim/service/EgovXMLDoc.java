@@ -68,7 +68,7 @@ public class EgovXMLDoc {
 			File xmlFile = new File(storePathString,FilenameUtils.getName(file));
 			if (xmlFile.exists() && xmlFile.isFile()) {
 				fis = new FileInputStream(xmlFile);
-				mailDoc = SndngMailDocument.Factory.parse(xmlFile);
+				mailDoc = (SndngMailDocument) SndngMailDocument.Factory.parse(xmlFile);
 
 			}
 		} finally {

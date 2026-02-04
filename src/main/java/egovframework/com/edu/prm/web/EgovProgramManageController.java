@@ -172,9 +172,10 @@ public class EgovProgramManageController {
                 }
                 wb.write(response.getOutputStream());
             }
-        } catch (Exception e) {
+        } catch (Throwable e) {
             LOGGER.error("XLSX export failed", e);
-            writePlainError(response, "엑셀 다운로드 중 오류가 발생했습니다. 서버 로그를 확인하세요.");
+            writePlainError(response, "엑셀 다운로드 중 오류가 발생했습니다: "
+                    + e.getClass().getName() + (e.getMessage() == null ? "" : (" - " + e.getMessage())));
         }
     }
 
@@ -235,7 +236,7 @@ public class EgovProgramManageController {
         try {
             Class.forName(name);
             return true;
-        } catch (ClassNotFoundException e) {
+        } catch (Throwable e) {
             return false;
         }
     }
@@ -244,7 +245,8 @@ public class EgovProgramManageController {
         try {
             if (!response.isCommitted()) {
                 response.reset();
-                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                // Avoid web.xml 500 error-page override so the real message is returned.
+                response.setStatus(HttpServletResponse.SC_OK);
                 response.setContentType("text/plain; charset=UTF-8");
                 response.getWriter().write(message);
                 response.getWriter().flush();
