@@ -82,16 +82,17 @@ public class EgovNetworkState {
 				FileSystemUtils util = new FileSystemUtils();
 				Process p = util.processOperate("EgovNetworkState", execStr);
 				InputStream in = p.getInputStream();
-				String out = null;
+				StringBuilder out = new StringBuilder();
 				int c;
 				while ((c = in.read()) != -1) {
-					out = out + new String(new Character((char) c).toString());
+					out.append((char) c);
 				}
 				in.close();
-				if (out == null || out.indexOf("MAC Address = ") == -1) {
+				String outValue = out.toString();
+				if (outValue.indexOf("MAC Address = ") == -1) {
 					throw new IllegalArgumentException("String Split Error!");
 				}
-				mac = out.substring(out.indexOf("MAC Address = ") + 14, out.indexOf("MAC Address = ") + 31);
+				mac = outValue.substring(outValue.indexOf("MAC Address = ") + 14, outValue.indexOf("MAC Address = ") + 31);
 
 			} else if ("UNIX".equals(Globals.OS_TYPE)) {
 				//log.debug("getMyMACAddress IP : " + localIP);
@@ -284,16 +285,15 @@ public class EgovNetworkState {
 	 * @see
 	 */
 	private static String getCharFilter(String str) {
-		String outValue = "";
+		StringBuilder outValue = new StringBuilder();
 
 		for (int i = 0; i < str.length(); i++) {
 			char c = str.charAt(i);
 
 			if (c > 45 && c < 59) {
-				Character cr = new Character(c);
-				outValue += cr.toString();
+				outValue.append(c);
 			}
 		}
-		return outValue;
+		return outValue.toString();
 	}
 }

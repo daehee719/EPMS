@@ -26,6 +26,7 @@ import org.apache.commons.mail.MultiPartEmail;
  *  </pre>
  */
 
+@SuppressWarnings("deprecation")
 public class EgovMultiPartEmail implements Serializable {
 
 	private static final long serialVersionUID = -4322006921324597283L;

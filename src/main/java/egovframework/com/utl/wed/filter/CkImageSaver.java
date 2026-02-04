@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Collection;
-import java.util.Collection;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -103,14 +102,11 @@ public class CkImageSaver {
 		} else {
 			try {
 				Class<?> klass = Class.forName(saveManagerClass);
-				fileSaveManager = (FileSaveManager) klass.newInstance();
+				fileSaveManager = (FileSaveManager) klass.getDeclaredConstructor().newInstance();
 			} catch (ClassNotFoundException e) {
 				log.error(e);
 				throw new RuntimeException(e);
-			} catch (InstantiationException e) {
-				log.error(e);
-				throw new RuntimeException(e);
-			} catch (IllegalAccessException e) {
+			} catch (ReflectiveOperationException e) {
 				log.error(e);
 				throw new RuntimeException(e);
 			}

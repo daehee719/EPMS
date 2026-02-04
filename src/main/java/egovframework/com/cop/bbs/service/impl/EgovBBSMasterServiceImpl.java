@@ -33,6 +33,7 @@ import egovframework.com.utl.fcc.service.EgovStringUtil;
  * </pre>
  */
 
+@SuppressWarnings("deprecation")
 @Service("EgovBBSMasterService")
 public class EgovBBSMasterServiceImpl extends EgovAbstractServiceImpl implements EgovBBSMasterService {
 

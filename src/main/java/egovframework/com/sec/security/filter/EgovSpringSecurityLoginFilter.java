@@ -20,7 +20,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import egovframework.com.cmm.EgovMessageSource;
@@ -118,7 +119,7 @@ public class EgovSpringSecurityLoginFilter implements Filter {
 							springSecurity = (UsernamePasswordAuthenticationFilter) beans.values().toArray()[0];
 							springSecurity.setUsernameParameter("egov_security_username");
 							springSecurity.setPasswordParameter("egov_security_password");
-							springSecurity.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(request.getServletContext().getContextPath() +"/egov_security_login", "POST"));
+							springSecurity.setRequiresAuthenticationRequestMatcher(buildLoginRequestMatcher(httpRequest));
 						} else {
 							LOGGER.error("No AuthenticationProcessingFilter");
 							throw new IllegalStateException("No AuthenticationProcessingFilter");
@@ -225,7 +226,7 @@ public class EgovSpringSecurityLoginFilter implements Filter {
 								springSecurity = (UsernamePasswordAuthenticationFilter) beans.values().toArray()[0];
 								springSecurity.setUsernameParameter("egov_security_username");
 								springSecurity.setPasswordParameter("egov_security_password");
-								springSecurity.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(request.getServletContext().getContextPath() +"/egov_security_login", "POST"));
+								springSecurity.setRequiresAuthenticationRequestMatcher(buildLoginRequestMatcher(httpRequest));
 							} else {
 								LOGGER.error("No AuthenticationProcessingFilter");
 								throw new IllegalStateException("No AuthenticationProcessingFilter");
@@ -267,6 +268,15 @@ public class EgovSpringSecurityLoginFilter implements Filter {
 		}
 
 		chain.doFilter(request, response);
+	}
+
+	private PathPatternRequestMatcher buildLoginRequestMatcher(HttpServletRequest request) {
+		PathPatternRequestMatcher.Builder builder = PathPatternRequestMatcher.withDefaults();
+		String contextPath = request.getServletContext().getContextPath();
+		if (contextPath != null && !contextPath.isEmpty()) {
+			builder = builder.basePath(contextPath);
+		}
+		return builder.matcher(HttpMethod.POST, "/egov_security_login");
 	}
 
 	public void init(FilterConfig filterConfig) throws ServletException {

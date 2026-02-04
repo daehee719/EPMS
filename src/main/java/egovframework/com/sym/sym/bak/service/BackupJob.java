@@ -46,6 +46,7 @@ import egovframework.com.utl.sim.service.EgovFileTool;
  * </pre>
  */
 
+@SuppressWarnings("unchecked")
 public class BackupJob implements Job {
 
 	/** logger */
@@ -166,8 +167,8 @@ public class BackupJob implements Job {
 
 			List<String> list = EgovFileTool.getSubFilesByAll(fileArr);
 
-			for (int i = 0; i < list.size(); i++) {
-				File sfile = new File((String) list.get(i));
+			for (String filePath : list) {
+				File sfile = new File(filePath);
 				finput = new FileInputStream(sfile);
 
 				if (ArchiveStreamFactory.TAR.equals(archiveFormat)) {

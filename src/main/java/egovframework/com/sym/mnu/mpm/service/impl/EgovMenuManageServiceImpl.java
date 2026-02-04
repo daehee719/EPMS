@@ -473,13 +473,13 @@ public class EgovMenuManageServiceImpl extends EgovAbstractServiceImpl implement
 					HSSFCell cell = null;
 					cell = row.getCell(0); //메뉴번호
 					if (cell != null) {
-						Double doubleCell = new Double(cell.getNumericCellValue());
-						vo.setMenuNo(Integer.parseInt("" + doubleCell.longValue()));
+						long value = (long) cell.getNumericCellValue();
+						vo.setMenuNo((int) value);
 					}
 					cell = row.getCell(1); //메뉴순서
 					if (cell != null) {
-						Double doubleCell = new Double(cell.getNumericCellValue());
-						vo.setMenuOrdr(Integer.parseInt("" + doubleCell.longValue()));
+						long value = (long) cell.getNumericCellValue();
+						vo.setMenuOrdr((int) value);
 					}
 					cell = row.getCell(2); //메뉴명
 					if (cell != null) {
@@ -487,8 +487,8 @@ public class EgovMenuManageServiceImpl extends EgovAbstractServiceImpl implement
 					}
 					cell = row.getCell(3); //상위메뉴번호
 					if (cell != null) {
-						Double doubleCell = new Double(cell.getNumericCellValue());
-						vo.setUpperMenuId(Integer.parseInt("" + doubleCell.longValue()));
+						long value = (long) cell.getNumericCellValue();
+						vo.setUpperMenuId((int) value);
 					}
 					cell = row.getCell(4); //메뉴설명
 					if (cell != null) {

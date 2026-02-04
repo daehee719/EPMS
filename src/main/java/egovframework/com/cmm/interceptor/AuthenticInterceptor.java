@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
@@ -40,6 +40,8 @@ public class AuthenticInterceptor implements HandlerInterceptor {
 	@SuppressWarnings("unused")
 	@Autowired
 	private Environment environment;
+
+	private static final AntPathMatcher ANT_PATH_MATCHER = new AntPathMatcher();
 	
 	/** 관리자 접근 권한 패턴 목록 */
 	private List<String> adminAuthPatternList;
@@ -69,12 +71,15 @@ public class AuthenticInterceptor implements HandlerInterceptor {
 		List<String> authList = (List<String>)EgovUserDetailsHelper.getAuthorities();
 		//관리자인증여부
 		boolean adminAuthUrlPatternMatcher = false;
-		//AntPathRequestMatcher
-		AntPathRequestMatcher antPathRequestMatcher = null;
+		String requestUri = request.getRequestURI();
+		String contextPath = request.getContextPath();
+		String matchPath = requestUri;
+		if (contextPath != null && !contextPath.isEmpty() && requestUri.startsWith(contextPath)) {
+			matchPath = requestUri.substring(contextPath.length());
+		}
 		//관리자가 아닐때 체크함
 		for(String adminAuthPattern : adminAuthPatternList){
-			antPathRequestMatcher = new AntPathRequestMatcher(adminAuthPattern);
-			if(antPathRequestMatcher.matches(request)){
+			if(ANT_PATH_MATCHER.match(adminAuthPattern, matchPath)){
 				adminAuthUrlPatternMatcher = true;
 			}
 		}
